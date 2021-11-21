@@ -19,8 +19,8 @@ class TodosProjects:
         return self.cur.lastrowid
 
     def all_projects(self):
-      self.cur.execute(f'SELECT * FROM projects')
-      return self.cur.fetchall()
+        self.cur.execute(f"SELECT * FROM projects")
+        return self.cur.fetchall()
     
     def get_project(self, id):
       self.cur.execute(f"SELECT * FROM projects WHERE id = {id}")
@@ -37,5 +37,5 @@ class TodosProjects:
         except sqlite3.OperationalError as e:
             print(e)
     
-db_file = "todos_base.db" # ale najpierw trzeba ją stworzyć funkcją w kodzie lub ręcznie w programie z bazami danych edit: stworzona
+db_file = "projects.db" # ale najpierw trzeba ją stworzyć funkcją w kodzie lub ręcznie w programie z bazami danych edit: stworzona
 projects = TodosProjects(db_file)

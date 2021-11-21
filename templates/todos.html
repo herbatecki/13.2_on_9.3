@@ -8,24 +8,26 @@
     </style>
 </head>
 <body>
-<h2>Lista zadań</h2>
+<h2>List of projects</h2>
 
 <table>
     <thead>
-    <th>Tytuł</th>
-    <th>Opis</th>
-    <th>Czy zrobione?</th>      
+    <th> ID </th>
+    <th>name</th>
+    <th>start_date</th>
+    <th>end_date</th>      
     </thead>
-{% for todo in todos %}
+{% for project in projects %}
     <tr>
-        <td><a href="/todos/{{ loop.index }}">{{ todo.name }}</a> </td>
-        <td>{{ todo.start_date }}</td>
-        <td>{{ todo.end_date }}</td>
+        <td><a href="/todos/{{ loop.index }}">{{ project[0] }}</a> </td>
+        <td>{{ project[1] }}</td>
+        <td>{{ project[2] }}</td>
+        <td>{{ project[3] }}</td>  <!--dlaczego to działa? Dlatego, że mam tabelę w bazie danych 'projects' i po niej iteruje każdy 'project' czy to chodzi o to, że w app.py ma krotkę --> >
     </tr>
 {% endfor %}
 </table>
 <div>
-    <h2> Dodaj nowe zadanie: </h2>
+    <h2> Add a new project: </h2>
     <form method="POST" action='/todos/'>
         {{ form.hidden_tag() }}
         <table>
