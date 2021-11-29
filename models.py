@@ -12,7 +12,7 @@ class TodosProjects:
 
     def create_project(self, project):
         sql ='''INSERT INTO projects(name, start_date, end_date)
-             VALUES(?,?,?)'''
+             VALUES(?,?,?)''' # tu musi być krotka
 
         self.cur.execute(sql, project)
         self.conn.commit()

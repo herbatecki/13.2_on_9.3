@@ -28,11 +28,12 @@ def projects_list():
 @app.route('/todos/<int:project_id>/', methods = ["POST", 'GET'])
 def project_details(project_id):
     project = projects.get_project(project_id -1)
-    form = TodoFormProject(data=project)
+    form = TodoFormProject()
 
     if request.method == 'POST':
         if form.validate_on_submit():
-            projects.update(project_id, form.data)
+            data = tuple(form.data.values())[:3]
+            projects.update(project_id, data)
         return redirect(url_for('projects_list'))
     return render_template('todo.html', form=form, project_id= project_id)
 
